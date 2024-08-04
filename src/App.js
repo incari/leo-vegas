@@ -77,16 +77,20 @@ const App = () => {
   return (
     <div className="App">
       <Header searchMovies={searchMovies} searchParams={searchParams} setSearchParams={setSearchParams} />
+      {videoKey && isOpen ? (
+        <div className='modal'>
+          <div className='modal-content'>
+            <button className='close' onClick={closeModal}>X</button>
 
+            <YouTubePlayer
+              videoKey={videoKey}
+            />
+          </div>
+        </div>
+      ) : (
+        <div style={{ padding: "30px" }}><h6>no trailer available. Try another movie</h6></div>
+      )}
       <div className="container">
-        {videoKey ? (
-          <YouTubePlayer
-            videoKey={videoKey}
-          />
-        ) : (
-          <div style={{padding: "30px"}}><h6>no trailer available. Try another movie</h6></div>
-        )}
-
         <Routes>
           <Route path="/" element={<Movies movies={movies} viewTrailer={viewTrailer} closeCard={closeCard} />} />
           <Route path="/starred" element={<Starred viewTrailer={viewTrailer} />} />
