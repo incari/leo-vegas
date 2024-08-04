@@ -1,3 +1,4 @@
+@import 'MovieList';
 .container {
     padding-top: 100px;
     color: #fff;
@@ -14,6 +15,7 @@
     .wrapper {
         padding: 0 6px;
         margin-bottom: 2rem;
+        @include movie-grid
     }
 
     .card, 
