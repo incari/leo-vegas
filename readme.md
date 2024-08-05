@@ -1,17 +1,18 @@
 # LeoVegas
 
-# Code Readabiity:
-    Comments are sparse. Adding more comments would improve code readability.
-    Some function and variable names could be more descriptive.
+# Thank you
 
-# Error Handling:
-    Limited error handling, especially for network requests.
+I'm very grateful for the opportunity to show my work and hopefully ends working with you.
 
-# App Componenet:
-    Is cluttered and handles multiple responsibilities. It should be refactored into smaller components.
+# App Components:
+
+I found that many of the tasks have already a component to resolve it so I decide to use it instead of creating a new ones.
+And me modifications were the smallest as possible to achieve the same result and keep the code clean.
 
 # State Management:
-    Some state is managed locally within components when it could be moved to the Redux store for better state management.
+
+I use the local state for the infinite scroll to avoid the need to pass the state to the child components. But later I changed to redux to have one source of truth.
+
 
 # API Calls:
-    API call logic is directly in components. This should be abstracted to a separate service layer.
+I refactored the api calls to a customs hooks.
