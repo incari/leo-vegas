@@ -13,6 +13,7 @@ const MovieList = ({ initialMovies, viewTrailer, closeCard, searchQuery }) => {
         prevQueryRef.current = currentQuery;
     });
 
+    // get the initial and previous query   
     const prevQuery = prevQueryRef.current;
 
     const loadMoreMovies = async () => {
@@ -20,19 +21,23 @@ const MovieList = ({ initialMovies, viewTrailer, closeCard, searchQuery }) => {
         try {
             let newMovies = [];
             if (!searchQuery) {
+                // No searchQuery, fetching discover page
                 const response = await fetch(`${ENDPOINT_DISCOVER}&page=${page}}`);
                 const data = await response.json();
                 newMovies = data.results;
             } else {
+                // Use the search endpoint instead 
                 const response = await fetch(`${ENDPOINT_SEARCH}&page=${page}&query=${searchQuery}`);
                 const data = await response.json();
                 newMovies = data.results;
             }
 
             if (currentQuery === searchQuery) {
+                // If the search query is the same as the previous one, add the new movies to the existing ones
                 setMovies(prevMovies => [...prevMovies, ...newMovies]);
                 setPage(prevPage => prevPage + 1);
             } else {
+                // If the search query is different, set the new movies and reset the page
                 setMovies(newMovies);
                 setPage(2); // since the first page has already been fetched
                 setCurrentQuery(searchQuery);
