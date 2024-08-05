@@ -32,7 +32,7 @@ const MovieList = ({ initialMovies, viewTrailer, closeCard, load }) => {
     return (
         <div className="movie-grid">
             {movies?.map((movie) => (
-                <Movie key={movie.id} movie={movie} />
+                <Movie key={movie.id} movie={movie} viewTrailer={viewTrailer} closeCard={closeCard} />
             ))}
         </div>
     );
